@@ -1,34 +1,29 @@
 require 'rspotify'
 
-hip_hop_artist = RSpotify::Artist.search('Jay-Z').first
+spot_artists = [
+hip_hop_artist = RSpotify::Artist.search('Jay-Z').first,
 
-rock_artist = RSpotify::Artist.search('The Rolling Stones').first
+rock_artist = RSpotify::Artist.search('The Rolling Stones').first,
 
-pop_artist = RSpotify::Artist.search('One Direction').first
+pop_artist = RSpotify::Artist.search('One Direction').first,
 
-country_artist = RSpotify::Artist.search('Tim McGraw').first
+country_artist = RSpotify::Artist.search('Tim McGraw').first,
 
-classical_artist = RSpotify::Artist.search('Beethoven').first
+classical_artist = RSpotify::Artist.search('Beethoven').first,
 
-jazz_artist = RSpotify::Artist.search('Miles Davis').first
+jazz_artist = RSpotify::Artist.search('Miles Davis').first,
 
-randb_artist = RSpotify::Artist.search('Alicia Keys').first
+randb_artist = RSpotify::Artist.search('Alicia Keys').first,
 
 electronic_artist = RSpotify::Artist.search('Avicii').first
-
-
-# hip_hop_artist.related_artists.each do |arist|
-#   RSpotify::Artist.search('artist.name').first
-# end
-
-
+]
 
 
 def populate_db_by_artist(artist_obj)
   create_data_and_tracks(artist_obj)
-  others = find_similar_to(artist_obj)
-  other.each do |artist|
-    create_data_and_tracks(artist)
+  others = artist_obj.related_artists
+  others.each do |artist_obj_new|
+    create_data_and_tracks(artist_obj_new)
   end
 end
 
@@ -40,13 +35,14 @@ def create_data_and_tracks(artist_obj)
   end
 end
 
+spot_artists.each { |artist| populate_db_by_artist(artist) }
 
-rock_artist.related_artists.each do |artist|
-  p rock_artist.name
-  p "________________________________"
-  p artist.name
-  artist.top_tracks(:US).each do |track|
-    p track.name
-  end
-end
+# rock_artist.related_artists.each do |artist|
+#   p rock_artist.name
+#   p "________________________________"
+#   p artist.name
+#   artist.top_tracks(:US).each do |track|
+#     p track.name
+#   end
+# end
 
