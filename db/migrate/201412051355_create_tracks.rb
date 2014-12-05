@@ -4,7 +4,6 @@ class CreateTracks < ActiveRecord::Migration
     create_table :tracks do |t|
       t.string :name
       t.string :album_name
-      t.string :link
       t.integer :artist_id
 
       t.timestamps
