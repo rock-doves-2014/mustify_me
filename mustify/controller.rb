@@ -17,13 +17,17 @@ randb_artist = RSpotify::Artist.search('Alicia Keys').first
 electronic_artist = RSpotify::Artist.search('Avicii').first 
 
 
-hip_hop_artist.related_artists.each do |arist|
-  RSpotify::Artist.search('artist.name').first
-end
-
-# rock_artist.related_artists.each do |artist|
-#   p artist.name
+# hip_hop_artist.related_artists.each do |arist|
+#   RSpotify::Artist.search('artist.name').first
 # end
+
+rock_artist.related_artists.each do |artist|
+  p "________________________________"
+  p artist.name
+  artist.top_tracks(:US).each do |track|
+    p track.name
+  end
+end
 
 # pop_artist.related_artists.each do |artist|
 #   p artist.name
