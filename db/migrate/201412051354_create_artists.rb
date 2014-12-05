@@ -6,5 +6,6 @@ class CreateArtists < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
 
 end

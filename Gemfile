@@ -5,3 +5,5 @@ gem 'rspotify'
 gem 'sqlite3'
 gem 'faker'
 gem 'rspec'
+gem 'rspotify'
+
