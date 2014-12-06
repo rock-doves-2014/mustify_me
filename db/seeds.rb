@@ -36,13 +36,3 @@ def create_data_and_tracks(artist_obj)
 end
 
 spot_artists.each { |artist| populate_db_by_artist(artist) }
-
-# rock_artist.related_artists.each do |artist|
-#   p rock_artist.name
-#   p "________________________________"
-#   p artist.name
-#   artist.top_tracks(:US).each do |track|
-#     p track.name
-#   end
-# end
-

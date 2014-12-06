@@ -1,4 +1,5 @@
 require_relative '../../config/application'
+require_relative '../view/view'
 
 class Controller
 
@@ -26,15 +27,21 @@ class Controller
   end
 
   def display
-    View.title
-    View.show_track(@track_answer_name)
-    View.show_choices(rand_artists_choices.shuffle)
-    if View.user_input == ''
-      View.show_answer(@track_answer_artist)
+    create_question
+    view = View.new
+    view.title
+    view.show_track(@track_answer_name)
+    view.show_choices(rand_artists_choices.shuffle)
+    user_input = view.user_input
+    user_input
+    # sleep (5)
+    if user_input == ''
+      view.show_answer(@track_answer_artist)
     end
   end
 
 end
 
 controller = Controller.new
-controller.create_question
+controller.display while true
+
